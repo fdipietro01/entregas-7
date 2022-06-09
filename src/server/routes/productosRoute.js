@@ -1,7 +1,7 @@
 const express = require("express");
 const productosRouter = express.Router();
-const Contenedor = require("../../../clases/producto");
-const autorizacion = require("../../middlewares/auth.middleware");
+const Contenedor = require("../../clases/producto");
+const autorizacion = require("../middlewares/auth.middleware");
 
 const contenedorProducto = new Contenedor();
 contenedorProducto.crearArchivo();
@@ -62,13 +62,9 @@ productosRouter.delete("/:id", autorizacion, (req, res) => {
   const vacio = contenedorProducto.archivoVacio();
   if (vacio) res.send({ respuesta: "Catalogo Vacio" });
   else {
-    if (req.params.id === "")
-      res.send({ respuesta: "Error en parámetros de la solicitud" });
-    else {
-      contenedorProducto.borrarProducto(req.params.id);
-      contenedorProducto.escribirArchivo();
-      res.send({ respuesta: "Producto eliminado" });
-    }
+    contenedorProducto.borrarProducto(req.params.id);
+    contenedorProducto.escribirArchivo();
+    res.send({ respuesta: "Producto eliminado" });
   }
 });
 

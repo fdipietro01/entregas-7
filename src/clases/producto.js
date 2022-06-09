@@ -11,7 +11,7 @@ class Contenedor {
     fs.writeFile(this.ruta, JSON.stringify(this.productos), (err, data) =>
       err
         ? console.log("No se pudo Crear Archivo")
-        : console.log("Archivo Creado")
+        : console.log("Archivo de productos creado")
     );
   }
 
@@ -26,7 +26,7 @@ class Contenedor {
 
   agregarProducto(name, descripcion, codigo, foto, precio, stock) {
     this.idCounter++;
-    const timestamp = Date.now();
+    const timestamp = Date();
     const nuevoProd = {
       name,
       descripcion,

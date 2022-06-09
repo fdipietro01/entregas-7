@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const productosRouter = require('./routes/productos/index');
-const carritoRouter = require('./routes/carrito/index');
+const productosRouter = require('./routes/productosRoute');
+const carritoRouter = require('./routes/carritoRoute');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
