@@ -8,6 +8,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/productos", productosRouter)
 app.use("/api/carrito", carritoRouter)
 
+app.use("*", (req, res) => {
+    console.log(req.route);
+    res.json({
+        error:-2,
+        descripcion: `ruta ${req.originalUrl} método ${req.method} no existe`
+    })
+})
 
 // ver tema del puerto
 app.listen(8080, ()=>{console.log("Escuchando en el puerto 8080");})
